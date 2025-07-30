@@ -327,9 +327,9 @@ dependencies:
       - imageio==2.31.1
       - ipython==8.12.3
       - joblib==1.3.2
-      - jsonmerge==1.9.2     
+      - jsonmerge==1.9.2
       - kiwisolver==1.4.4
-      - kornia==0.5.11   
+      - kornia==0.5.11
       - lpips==0.1.4
       - matplotlib==3.7.1
       - oauthlib==3.2.2
