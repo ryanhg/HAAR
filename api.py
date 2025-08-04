@@ -253,7 +253,9 @@ async def infer_hairstyle(request: InferenceRequest):
         with zipfile.ZipFile(zip_path, 'w') as zipf:
             for file_path in generated_files:
                 if os.path.exists(file_path):
-                    zipf.write(file_path, os.path.basename(file_path))
+                    # Preserve directory structure in zip to avoid filename conflicts
+                    arcname = os.path.relpath(file_path, save_path)
+                    zipf.write(file_path, arcname)
 
         return {
             "status": "success",
@@ -395,7 +397,9 @@ async def interpolate_hairstyles(request: TextInterpolationRequest):
         with zipfile.ZipFile(zip_path, 'w') as zipf:
             for file_path in generated_files:
                 if os.path.exists(file_path):
-                    zipf.write(file_path, os.path.basename(file_path))
+                    # Preserve directory structure in zip to avoid filename conflicts
+                    arcname = os.path.relpath(file_path, save_path)
+                    zipf.write(file_path, arcname)
 
         return {
             "status": "success",
@@ -545,7 +549,9 @@ async def image_to_hairstyle(
         with zipfile.ZipFile(zip_path, 'w') as zipf:
             for file_path in generated_files:
                 if os.path.exists(file_path):
-                    zipf.write(file_path, os.path.basename(file_path))
+                    # Preserve directory structure in zip to avoid filename conflicts
+                    arcname = os.path.relpath(file_path, save_path)
+                    zipf.write(file_path, arcname)
 
         # Clean up temporary files
         shutil.rmtree(temp_dir)
